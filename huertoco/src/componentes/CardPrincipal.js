@@ -8,7 +8,7 @@ export default function CardPrincipal({ src, title, description }) {
                 <div className="carousel slide w-55 container mt-5 ">
                     <div>
                         <div>
-                            <img src={src} className="d-block w-100 " alt="..." />
+                            <img src={src} className="d-block w-100 container-xxl " alt="..." />
                         </div>
                     </div>
                 </div>

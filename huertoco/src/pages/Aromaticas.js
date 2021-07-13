@@ -1,65 +1,42 @@
 import CardPrincipal from "../componentes/CardPrincipal";
 import Footer from "../componentes/Footer";
 import Introduccion from "../componentes/Introduccion";
+import { useEffect } from "react";
 
 import { useState } from "react";
 import { useHistory } from "react-router";
 
-export default function Aromaticas() {
+import {URL_AROMATICAS, URL_AROMATICAS_INPUT} from '../config/config';
 
+export default function Aromaticas() {
+  
+    const [input, setInput] = useState("");
+    const [Aromaticas, setAromaticas] = useState([]);
 
     const history = useHistory();
 
-    const handleRedirect = HortalizaID => history.push("/HortalizaDetalles/" + HortalizaID);
+    const handleRedirect = AromaticasID => history.push("/AromaticasDetalles/" + AromaticasID);
+    const handleSearch = e => setInput(e.target.value);
 
-  const AromaticasArray = [
-    {
-      nombre: "cilantro",
-      scr: "file:///Users/josecarlosalvaradosanchez/Documents/ProyectoFinal/huertoco/src/img/cilantro.jpg",
-    },
+    useEffect(() => {
+      fetch(URL_AROMATICAS)
+      .then(Response => Response.json())
+      .then(data => {
+          setAromaticas(data);
+      });
+  }, [])
 
-    {
-      nombre: "Eneldo",
-      scr: "file:///Users/josecarlosalvaradosanchez/Documents/ProyectoFinal/huertoco/src/img/eneldo.jpg",
-    },
 
-    {
-      nombre: "Estragón",
-      scr: "file:///Users/josecarlosalvaradosanchez/Documents/ProyectoFinal/huertoco/src/img/estragon.jpg",
-    },
+  useEffect(() => {
+    fetch(URL_AROMATICAS_INPUT + input)
+    .then(Response => Response.json())
+    .then(data => {
+      setAromaticas(data);
+    });
+}, [input, setAromaticas])
 
-    {
-      nombre: "hierbaluia",
-      scr: "file:///Users/josecarlosalvaradosanchez/Documents/ProyectoFinal/huertoco/src/img/hierbaluisa.jpg",
-    },
 
-    {
-      nombre: "laurel",
-      scr: "file:///Users/josecarlosalvaradosanchez/Documents/ProyectoFinal/huertoco/src/img/laurel.jpg",
-    },
 
-    {
-      nombre: "lavanda",
-      scr: "file:///Users/josecarlosalvaradosanchez/Documents/ProyectoFinal/huertoco/src/img/lavanda.jpg",
-    },
-
-    {
-      nombre: "mejorana",
-      scr: "file:///Users/josecarlosalvaradosanchez/Documents/ProyectoFinal/huertoco/src/img/mejorana.jpg",
-    },
-
-    {
-      nombre: "menta",
-      scr: "file:///Users/josecarlosalvaradosanchez/Documents/ProyectoFinal/huertoco/src/img/menta.jpg",
-    },
-
-    {
-      nombre: "orégano",
-      scr: "file:///Users/josecarlosalvaradosanchez/Documents/ProyectoFinal/huertoco/src/img/oregano.jpg",
-    },
-  ];
-
-  const [Aromaticas, setAromaticas] = useState(AromaticasArray);
 
   return (
     <div>
@@ -78,9 +55,11 @@ export default function Aromaticas() {
       </div>
 
       <input
-        type="text"
-        placeholder="Buscar"
-        className="input-group container w-100 border border-secondary rounded mt-4"
+          type="text"
+          placeholder="Buscar"
+          className="input-group container w-100 border border-secondary rounded mt-4"
+          value={input}
+          onChange={handleSearch}
       />
 
       <div className="row mt-4">
@@ -89,7 +68,7 @@ export default function Aromaticas() {
             <div className="mt-3 col-4 px-4 mb-3" key={Aromatica.id}>
               <div
                 style={{
-                  backgroundImage: `url(${Aromatica.scr})`,
+                  backgroundImage: `url(${Aromatica.image})`,
                   height: 200,
                   backgroundSize: "cover",
                 }}
@@ -98,7 +77,7 @@ export default function Aromaticas() {
                   onClick={() => handleRedirect(Aromatica.id)}
                   className="float-start ms-2 bg-dark text-light w-50 opacity-50"
                 >
-                  {Aromatica.nombre}
+                  {Aromatica.name}
                 </p>
               </div>
             </div>

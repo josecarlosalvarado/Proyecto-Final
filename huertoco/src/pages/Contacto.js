@@ -4,10 +4,7 @@ import Footer from '../componentes/Footer';
 
 
 
-export default function Glosario() {
-
-
-
+export default function Contacto() {
     return (
         <div className="vh-100 d-flex justify-content-between flex-column">
             <div className="mt-3">

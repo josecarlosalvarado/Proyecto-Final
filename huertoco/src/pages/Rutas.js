@@ -7,6 +7,14 @@ import Home from './Home';
 import Login from './Login';
 import { headerUrl } from '../config/config';
 import HortalizaDetalles from './HortalizaDetalles';
+import AromaticasDetalles from './AromaticasDetalles';
+import DashboardHortaliza from './DashboardHortaliza';
+import DashboardAromaticas from './DashboardAromaticas';
+import DashboardContacto from './DashboardContacto';
+import AñadirHortaliza from './AñadirHortaliza';
+import AñadirAromatica from './AñadirAromatica';
+import ModificarHortaliza from './ModificarHortaliza';
+import Registro from "./Registro";
 
 export default function Rutas() {
     return (
@@ -17,15 +25,13 @@ export default function Rutas() {
             }}>
                 <BrowserRouter>
 
-                    <nav className="navbar navbar-expand-xxl p-2 fs-4 navbar-fixed-top">
+                    <nav className="navbar p-2 fs-4 navbar-fixed-top">
 
                         <NavLink exact to="/" className="text-decoration-none text-light">Home</NavLink>
                         <NavLink to="/hortaliza" className="text-decoration-none text-light">Hortalizas</NavLink>
                         <NavLink to="/Aromaticas" className="text-decoration-none text-light">Aromaticas</NavLink>
                         <NavLink to="/Contacto" className="text-decoration-none text-light">Contacto</NavLink>
-                        <NavLink to="/Login">
-                            <button className="btn btn-secondary" >Login</button>
-                        </NavLink>
+                        <NavLink to="/Login">&#128100;</NavLink>
 
                     </nav>
                     <Switch>
@@ -37,6 +43,14 @@ export default function Rutas() {
                         <Route path="/Login" component={Login} />
 
                         <Route path="/HortalizaDetalles/:HortalizaID" component={HortalizaDetalles} />
+                        <Route path="/AromaticasDetalles/:AromaticasID" component={AromaticasDetalles} />
+                        <Route path="/ModificarHortaliza/:HortalizaID" component={ModificarHortaliza} />
+                        <Route path="/Registro" component={Registro}/>
+                        <Route path="/DashboardHortaliza" component={DashboardHortaliza}/>
+                        <Route path="/DashboardAromaticas" component={DashboardAromaticas}/>
+                        <Route path="/DashboardContacto" component={DashboardContacto}/>
+                        <Route path="/AñadirHortaliza" component={AñadirHortaliza}/>
+                        <Route path="/AñadirAromatica" component={AñadirAromatica}/>
                     </Switch>
 
                 </BrowserRouter>
