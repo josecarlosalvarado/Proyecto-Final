@@ -4,15 +4,15 @@ import { useForm } from '../hooks/useForm';
 import Footer from '../componentes/Footer';
 import { useParams } from "react-router"
 
-import {URL_VEGETABLE} from '../config/config';
-
 export default function ModificarHortaliza() {
 
     const { HortalizaID } = useParams();
-
-    const initialFormState = {name: "", scientific_name: "", family: "", sowing_temperate_climates: "", sow_other_climates: "", plantation: "", harvest: "", flowerpot: "", substrate_fertilizer: "", irrigation: "", light: "", weather: "", difficulty: "", notes: "", properties: "", associations: "", pests: "", filter_month: "", image: ""};
+    const { NameHortaliza, scientificnameHortaliza,familyhortaliza,sowingTemperateClimates, sowOtherClimates,plantation,harvest,flowerpot,substrateFertilizer,irrigation, light, weather, difficulty, notes, properties,associations,pests,filterMonth,image } = useParams();
+    
+    const initialFormState = {name: NameHortaliza, scientific_name: scientificnameHortaliza, family: familyhortaliza, sowing_temperate_climates: sowingTemperateClimates, sow_other_climates: sowOtherClimates, plantation: plantation, harvest: harvest, flowerpot: flowerpot, substrate_fertilizer: substrateFertilizer, irrigation: irrigation, light: light, weather: weather, difficulty: difficulty, notes: notes, properties: properties, associations: associations, pests: pests, filter_month: filterMonth, image: image};
     const [form, handleInputChange] = useForm(initialFormState); // Custom Hook
 
+    const URL_VEGETABLE_MODIFICAR = "http://localhost:8000/api/vegetables/";
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -25,9 +25,8 @@ export default function ModificarHortaliza() {
             body: JSON.stringify(form)
         }
 
-        fetch(URL_VEGETABLE + HortalizaID, options)
+        fetch(URL_VEGETABLE_MODIFICAR + HortalizaID, options)
         .then(response => {
-            console.log(response);
             return response.json()
         })
         .then(data => {
@@ -47,7 +46,7 @@ export default function ModificarHortaliza() {
                     <div className="d-flex justify-content-between">
                         <form onSubmit={handleSubmit} className="form-group d-flex justify-content-around">
                             <div className="me-2">
-                                <input onChange={handleInputChange} value={form.name} name="name"  className="form-control mb-3" type="text" placeholder=" name" />
+                                <input onChange={handleInputChange} value={form.name} name="name"  className="form-control mb-3" type="text" placeholder="name" />
                                 <input onChange={handleInputChange} value={form.scientific_name} name="scientific_name" className="form-control mb-3" type="text" placeholder=" scientific_name" />
                                 <input onChange={handleInputChange} value={form.family} name="family" className="form-control mb-3" type="text" placeholder="family" />
                                 <input onChange={handleInputChange} value={form.sowing_temperate_climates} name="sowing_temperate_climates" className="form-control mb-3" type="text" placeholder="sowing_temperate_climates" />

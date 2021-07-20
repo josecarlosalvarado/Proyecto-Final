@@ -14,6 +14,7 @@ import DashboardContacto from './DashboardContacto';
 import AñadirHortaliza from './AñadirHortaliza';
 import AñadirAromatica from './AñadirAromatica';
 import ModificarHortaliza from './ModificarHortaliza';
+import ModificarAromatica from './ModificarAromatica';
 import Registro from "./Registro";
 
 export default function Rutas() {
@@ -44,7 +45,8 @@ export default function Rutas() {
 
                         <Route path="/HortalizaDetalles/:HortalizaID" component={HortalizaDetalles} />
                         <Route path="/AromaticasDetalles/:AromaticasID" component={AromaticasDetalles} />
-                        <Route path="/ModificarHortaliza/:HortalizaID" component={ModificarHortaliza} />
+                        <Route path="/ModificarHortaliza/:HortalizaID/:NameHortaliza/:scientificnameHortaliza/:familyhortaliza/:sowingTemperateClimates/:sowOtherClimates/:plantation/:harvest/:flowerpot/:substrateFertilizer/:irrigation/:light/:weather/:difficulty/:notes/:properties/:associations/:pests/:filterMonth/:image" component={ModificarHortaliza} />
+                        <Route path="/ModificarAromatica/:AromaticaID" component={ModificarAromatica}/>
                         <Route path="/Registro" component={Registro}/>
                         <Route path="/DashboardHortaliza" component={DashboardHortaliza}/>
                         <Route path="/DashboardAromaticas" component={DashboardAromaticas}/>
@@ -52,10 +54,7 @@ export default function Rutas() {
                         <Route path="/AñadirHortaliza" component={AñadirHortaliza}/>
                         <Route path="/AñadirAromatica" component={AñadirAromatica}/>
                     </Switch>
-
                 </BrowserRouter>
-
-
             </div>
         </div>
     )

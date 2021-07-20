@@ -1,3 +1,4 @@
+//utilizamos un  hook generico para poder hacer una peticion post con un formulario
 import { useForm } from '../hooks/useForm';
 
 import {URL_REGISTRO} from '../config/config';
@@ -9,6 +10,7 @@ export default function CardPrincipal() {
     const [form, handleInputChange] = useForm(initialFormState); // Custom Hook
 
     const handleSubmit = e => {
+        //hacemos una peticion post con toda la informacion del formulario
         e.preventDefault();
 
         const options = {

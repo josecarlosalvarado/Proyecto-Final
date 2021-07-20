@@ -2,6 +2,7 @@ const headerUrl = "https://ceroideas.es/wp-content/uploads/2021/05/foto-header.j
 const headerUrlDetalle = "https://marketingcreativo.studio/wp-content/uploads/2021/05/boniato.jpg"
 
 const URL_VEGETABLE = "http://localhost:8000/api/vegetables";
+
 const URL_VEGETABLE_DETALLE = "http://localhost:8000/api/vegetables/";
 const URL_INPUT_VEGETABLE = "http://localhost:8000/api/vegetables?term=";
 
@@ -35,4 +36,5 @@ export{
     URL_INPUT_CONTACTO,
     URL_DELETE_CONTACTO,
     URL_REGISTRO,
+    
 };

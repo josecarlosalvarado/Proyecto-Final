@@ -25,7 +25,7 @@ export default function Footer() {
         <div>
             <footer>
                 <hr></hr>
-                <ul class="nav d-flex justify-content-evenly">
+                <ul className="nav d-flex justify-content-evenly">
                     <p 
                         className="nav-item"
                         onClick={() => handleHortaliza()}
@@ -41,7 +41,7 @@ export default function Footer() {
                         onClick={() => handleContacto()}
                         >Contacto
                     </p>
-                    <li class="nav-item">
+                    <li className="nav-item">
                     <p 
                         className="nav-item"
                         onClick={() => handleRedirect()}

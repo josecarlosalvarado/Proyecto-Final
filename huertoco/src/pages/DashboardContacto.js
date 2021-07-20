@@ -68,8 +68,8 @@ const handleEliminar = EliminarId => {
               value={input}
               onChange={handleSearch}
           />
-          <table class="table w-100">
-            <thead class="table-dark">
+          <table className="table w-100">
+            <thead className="table-dark">
               <tr>
                 <th scope="col">nombre</th>
                 <th scope="col">Email</th>
@@ -80,7 +80,7 @@ const handleEliminar = EliminarId => {
             <tbody>
               {Contactos.map((Contacto) => {
                 return (
-                  <tr>
+                  <tr key={Contacto.id}>
                     <th scope="row">{Contacto.name}</th>
                     <td>{Contacto.email}</td>
                     <td>{Contacto.information}</td>

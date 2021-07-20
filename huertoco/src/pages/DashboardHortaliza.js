@@ -18,8 +18,8 @@ export default function Dashboardhortaliza() {
   
   const handleRedirect = (e) => history.push("/AñadirHortaliza");
   const handleSearch = (e) => setInput(e.target.value);
-  const handleModificar = (ModificarId) => {
-    history.push("/ModificarHortaliza/" + ModificarId);
+  const handleModificar = (ModificarId, NameHortaliza, scientificnameHortaliza, familyhortaliza, sowingTemperateClimates, sowOtherClimates, plantation, harvest, flowerpot,substrateFertilizer, irrigation, light, weather, difficulty, notes, properties,associations, pests, filterMonth, image) => {
+    history.push("/ModificarHortaliza/" + ModificarId + "/" + NameHortaliza + "/" + scientificnameHortaliza + "/" + familyhortaliza + "/" + sowingTemperateClimates + "/" + sowOtherClimates + "/" + plantation + "/" + harvest + "/" + flowerpot + "/" + substrateFertilizer + "/" +irrigation + "/" + light + "/" + weather  + "/" +difficulty + "/" + notes  + "/" + properties + "/" + associations + "/" +  pests + "/" + filterMonth  + "/" + image);
   };
 
   useEffect(() => {
@@ -81,8 +81,8 @@ export default function Dashboardhortaliza() {
               onChange={handleSearch}
             />
 
-          <table class="table w-100 ">
-            <thead class="table-dark">
+          <table className="table w-100 ">
+            <thead className="table-dark">
               <tr>
                 <th scope="col">nombre</th>
                 <th scope="col">nombrecientifico</th>
@@ -95,7 +95,7 @@ export default function Dashboardhortaliza() {
             <tbody>
               {Hortalizas.map((Hortaliza) => {
                 return (
-                  <tr>
+                  <tr key={Hortaliza.id}>
                     <th scope="row">{Hortaliza.name}</th>
                     <td>{Hortaliza.scientificName}</td>
                     <td>{Hortaliza.family}</td>
@@ -103,7 +103,7 @@ export default function Dashboardhortaliza() {
                     <td>
                       <button
                         className=" btn btn-success"
-                        onClick={() => handleModificar(Hortaliza.id)}
+                        onClick={() => handleModificar(Hortaliza.id, Hortaliza.name, Hortaliza.scientificName ,Hortaliza.family, Hortaliza.sowingTemperateClimates, Hortaliza.sowOtherClimates, Hortaliza.plantation, Hortaliza.harvest, Hortaliza.flowerpot, Hortaliza.substrateFertilizer, Hortaliza.irrigation, Hortaliza.light, Hortaliza.weather, Hortaliza.difficulty, Hortaliza.notes, Hortaliza.properties, Hortaliza.associations, Hortaliza.pests, Hortaliza.filterMonth, Hortaliza.image)}
                       >
                         Modificar
                       </button>

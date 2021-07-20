@@ -2,7 +2,7 @@ import { useForm } from '../hooks/useForm';
 
 import { useParams } from "react-router"
 
-import {URL_VEGETABLE} from '../config/config';
+// import {URL_VEGETABLE_MODIFICAR} from '../config/config';
 
 
 export default function CardPrincipal() {
@@ -11,6 +11,8 @@ export default function CardPrincipal() {
 
     const initialFormState = {name: "", scientific_name: "", family: "", sowing_temperate_climates: "", sow_other_climates: "", plantation: "", harvest: "", flowerpot: "", substrate_fertilizer: "", irrigation: "", light: "", weather: "", difficulty: "", notes: "", properties: "", associations: "", pests: "", filter_month: ""};
     const [form, handleInputChange] = useForm(initialFormState); // Custom Hook
+
+    const URL_VEGETABLE_MODIFICAR = "http://localhost:8000/api/vegetables/";
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -23,9 +25,8 @@ export default function CardPrincipal() {
            body: JSON.stringify(form)
         }
 
-        fetch(URL_VEGETABLE + AromaticasID, options)
+        fetch(URL_VEGETABLE_MODIFICAR + AromaticasID, options)
         .then(response => {
-            console.log(response);
             return response.json()
         })
         .then(data => {
@@ -41,7 +42,7 @@ export default function CardPrincipal() {
                     <h2 className="fs-5 text">Solicitar informacion</h2>
                     <div className="d-flex justify-content-between">
                         <form onSubmit={handleSubmit} className="form-group">
-                            <input onChange={handleInputChange} value={form.name} name="name"  className="form-control mb-3" type="text" placeholder=" name" />
+                            <input onChange={handleInputChange} value={form.name} name="name"  className="form-control mb-3" type="text" placeholder="" />
                             <input onChange={handleInputChange} value={form.scientific_name} name="scientific_name" className="form-control mb-3" type="text" placeholder=" scientific_name" />
                             <input onChange={handleInputChange} value={form.family} name="family" className="form-control mb-3" type="text" placeholder="family" />
                             <input onChange={handleInputChange} value={form.sowing_temperate_climates} name="sowing_temperate_climates" className="form-control mb-3" type="text" placeholder="sowing_temperate_climates" />

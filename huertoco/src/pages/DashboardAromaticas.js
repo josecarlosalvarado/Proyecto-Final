@@ -18,6 +18,10 @@ export default function DashboardAromaticas() {
 
     const handleSearch = e => setInput(e.target.value); 
 
+    const handleModificar = (ModificarId) => {
+      history.push("/ModificarAromatica/" + ModificarId);
+    };
+
     useEffect(() => {
         fetch(URL_AROMATICAS)
           .then((Response) => Response.json())
@@ -70,8 +74,8 @@ export default function DashboardAromaticas() {
                   value={input}
                   onChange={handleSearch}
               />
-              <table class="table w-100">
-                <thead class="table-dark">
+              <table className="table w-100">
+                <thead className="table-dark">
                   <tr>
                     <th scope="col">nombre</th>
                     <th scope="col">nombrecientifico</th>
@@ -84,14 +88,14 @@ export default function DashboardAromaticas() {
                 <tbody>
                   {Aromaticas.map((Aromaticas) => {
                     return (
-                      <tr>
+                      <tr key={Aromaticas.id}>
                         <th scope="row">{Aromaticas.name}</th>
                         <td>{Aromaticas.scientificName}</td>
                         <td>{Aromaticas.family}</td>
                         <td>{Aromaticas.difficulty}</td>
                         <td><button 
                           className=" btn btn-success"
-                          // onClick={() => handleModificar(Aromaticas.id)}
+                          onClick={() => handleModificar(Aromaticas.id)}
                           >Modificar
                       </button></td>
                         <td><button

@@ -1,26 +1,29 @@
 import { useForm } from '../hooks/useForm';
 
-import {URL_AROMATICAS} from '../config/config';
+import { useParams } from "react-router"
 
 
 export default function CardPrincipal() {
 
+    const { AromaticaID } = useParams();
+
     const initialFormState = {name: "", scientific_name: "", family: "", sowing_temperature_climates: "", sow_other_climates: "", harvest: "", flowerpot: "", subtrate_fertilizer: "", irrigation: "", light: "", weather: "", difficulty: "", notes: "", properties: "", pests: "", filter_month: ""};
     const [form, handleInputChange] = useForm(initialFormState); // Custom Hook
 
+    const URL_AROMATICAS_MODIFICAR = "http://localhost:8000/api/Aromatic/"
 
     const handleSubmit = e => {
         e.preventDefault();
 
         const options = {
-          method: "POST",
+          method: "PUT",
              headers: {
                "Content-type": "application/json",
             },
            body: JSON.stringify(form)
         }
 
-        fetch(URL_AROMATICAS, options)
+        fetch(URL_AROMATICAS_MODIFICAR + AromaticaID, options)
         .then(response => {
             console.log(response);
             return response.json()
